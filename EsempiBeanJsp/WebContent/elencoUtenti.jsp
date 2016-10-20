@@ -1,7 +1,12 @@
+<%@page import="java.util.List"%>
 <%@page import="it.alfasoft.francesca.bean.UtenteBean"%>
 <%@page import="it.alfasoft.francesca.dao.UtenteDao"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>   
+    <%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
+           
+       <jsp:useBean id="utente" class="it.alfasoft.francesca.bean.UtenteBean" scope="request"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,15 +30,17 @@ UtenteDao udao=new UtenteDao();
 int i=1;
 for(UtenteBean u : udao.getTuttiUtenti())
 {
+	utente.setNome(u.getNome());
+	utente.setCognome(u.getCognome());
 	%>
 	
 	<tr>
-	<td><%=i %>	</td>
-	<td><%=u.getNome() %></td>
-	<td><%=u.getCognome() %></td>
+	<td><%=i %></td>
+	<td>${utente.nome}</td>
+	<td><c:out value=" ${utente.cognome}"></c:out></td>
 	
 	</tr>
-	
+
 	<%
 	i++;
 }

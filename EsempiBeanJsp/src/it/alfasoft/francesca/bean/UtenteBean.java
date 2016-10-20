@@ -74,6 +74,15 @@ public class UtenteBean implements Serializable, IsValid{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+
+	public long getId_Utente() {
+		return id_Utente;
+	}
+
+	public void setId_Utente(long id_Utente) {
+		this.id_Utente = id_Utente;
+	}
 
 	@Override
 	public boolean isValid() {

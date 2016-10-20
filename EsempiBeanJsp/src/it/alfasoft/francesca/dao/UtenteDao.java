@@ -115,10 +115,53 @@ public class UtenteDao {
 	
 	//4. metodo per aggiornare i dati dell'utente
 	
-	
+	public boolean updateUtente(UtenteBean u)
+	{
+		boolean result=false;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		session.update(u);
+		result=true;
+		
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return result;
+	}
 	
 	//5.metodo per eliminare l'utente
 	
-	
+	public boolean deleteUtente(UtenteBean u)
+	{
+		boolean result=false;
+		long id=u.getId_Utente();
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		Query query=session.createQuery("from UtenteBean where id=:x1");
+		query.setLong("x1",id );
+		
+		result=true;
+		
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return result;
+	}
 	
 }

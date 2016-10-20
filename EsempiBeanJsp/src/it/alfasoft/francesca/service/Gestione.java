@@ -3,8 +3,6 @@ package it.alfasoft.francesca.service;
 import it.alfasoft.francesca.bean.UtenteBean;
 import it.alfasoft.francesca.dao.UtenteDao;
 
-import java.util.List;
-
 import Utility.PasswordCodification;
 
 
