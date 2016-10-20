@@ -17,6 +17,7 @@
 <form action="doLogin.jsp" method="post">
 Username: <input type="text" name="username"/> <br>
 Password: <input type="password" name="password"/> <br>
+<input type="hidden" name="call" value="2"/> <br>
 
 <input type="submit" value ="Login"/>
 
