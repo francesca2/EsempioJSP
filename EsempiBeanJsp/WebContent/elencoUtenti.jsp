@@ -27,23 +27,31 @@
 
 <%
 UtenteDao udao=new UtenteDao();
-int i=1;
-for(UtenteBean u : udao.getTuttiUtenti())
-{
-	utente.setNome(u.getNome());
-	utente.setCognome(u.getCognome());
+//int i=1;
+List<UtenteBean> lista =udao.getTuttiUtenti();
+session.setAttribute("lista",lista);
+
+//for(UtenteBean u : udao.getTuttiUtenti())
+//{
+//	utente.setNome(u.getNome());
+//	utente.setCognome(u.getCognome());
 	%>
 	
+	<c:set var="i" value="1" scope="page" />
+
+  <c:forEach items="${lista}" var="u">
+
 	<tr>
-	<td><%=i %></td>
-	<td>${utente.nome}</td>
-	<td><c:out value=" ${utente.cognome}"></c:out></td>
+	<td> <c:out value="${i}"/></td>
+	<td>  <c:out value="${u.nome}"/></td>
+	<td>  <c:out value="${u.cognome}"/></td>
 	
 	</tr>
-
+	<c:set var="i" value="${i + 1}" scope="page"/>
+  </c:forEach>	
 	<%
-	i++;
-}
+//	i++;
+//}
 %>
 
 
